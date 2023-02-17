@@ -1,0 +1,10 @@
+pyaudio
+numpy
+matplotlib.pyplot
+matplotlib
+wave
+os
+librosa
+pickle
+matplotlib
+multiprocessing

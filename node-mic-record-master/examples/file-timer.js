@@ -10,4 +10,4 @@ record.start().pipe(file)
 // Stop recording after three seconds and write to file
 setTimeout(function () {
   record.stop()
-}, 3000)
+}, 4000)

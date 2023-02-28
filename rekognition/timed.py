@@ -5,6 +5,7 @@ vid = cv2.VideoCapture(0)
 
 starttime = time.time()
 
+
 ret, frame = vid.read()
 cv2.imshow('Test', frame)
 

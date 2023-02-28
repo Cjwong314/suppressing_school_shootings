@@ -1,27 +1,22 @@
-# import the opencv library
 import cv2
+import time
 
+starttime = time.time()
 
-# define a video capture object
-vid = cv2.VideoCapture(0)
+import time
 
-while(True):
-	
-	# Capture the video frame
-	# by frame
-	ret, frame = vid.read()
+def take_photo():
+    current_time = time.ctime()
+    cap = cv2.VideoCapture(0)
+    ret, frame = cap.read()
+    cv2.imwrite('webcamphoto' + str(current_time) + '.jpg', frame)
+    cap.release()
+    print("photo taken")
 
+def main():
+    take_photo()
+    
 
-	# Display the resulting frame
-	cv2.imshow('Test', frame)
-	
-	# the 'q' button is set as the
-	# quitting button you may use any
-	# desired button of your choice
-	if cv2.waitKey(1) & 0xFF == ord('q'):
-		break
-
-# After the loop release the cap object
-vid.release()
-# Destroy all the windows
-cv2.destroyAllWindows()
+while (True): 
+    main()
+    time.sleep(15 - ((time.time() - starttime) % 15))

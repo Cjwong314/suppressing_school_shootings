@@ -42,9 +42,9 @@ def detect_labels(pic, bucket):
         print("Label: " + label['Name'])
         print("Confidence: " + str(label['Confidence']))
         print("Instances:")
-
+#This is where it checks to see if there is a gun in the image
         if label['Name'] == "Gun":
-            print("You dead")
+            print("Gun Detected")
             exit()
 
         print("Parents:")
@@ -90,4 +90,4 @@ def main():
 while (True): 
     main()
 
-    time.sleep(15 - ((time.time() - starttime) % 15))
+    time.sleep(5 - ((time.time() - starttime) % 5))

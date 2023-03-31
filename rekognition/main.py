@@ -2,6 +2,8 @@ import cv2
 import time
 import boto3
 import json
+import os
+from twilio.rest import Client
 
 starttime = time.time()
 
@@ -28,6 +30,17 @@ def upload_photo(pic):
     s3.meta.client.upload_file(str(pic), 'gun-rekognition', str(pic))
     print("photo uploaded")
 
+def text_sender():
+    account_sid = "ACa12d9736c34520b6c1abdf0c627de173"
+    auth_token = "2eba35dd5d96cf06efdbada2f4a63eb8"
+    client = Client(account_sid, auth_token)
+    message = client.messages.create(
+    body="Hello from Chris",
+    from_="+18559373996",
+    to="+17207572144"
+    )
+    print(message.sid)
+
 def detect_labels(pic, bucket):
 
     session = boto3.Session()
@@ -45,6 +58,7 @@ def detect_labels(pic, bucket):
 #This is where it checks to see if there is a gun in the image
         if label['Name'] == "Gun":
             print("Gun Detected")
+            text_sender()
             exit()
 
         print("Parents:")
